@@ -1,6 +1,6 @@
 /* ==========================================================================
    GLOBAL MDT - INTERACTIVE LANDING PAGE SCRIPT
-   Handles Hero Gallery Carousel, Catalog filtering, WhatsApp Quote Builder, & Lightbox
+   Handles Hero Gallery Carousel, Electric Canvas Background, Catalog, & WhatsApp Quote
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,6 +12,82 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileToggle.addEventListener('click', () => {
       navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
     });
+  }
+
+  // ==========================================
+  // ANIMATED ELECTRIC ENERGY CANVAS BACKGROUND
+  // ==========================================
+  const canvas = document.getElementById('energyCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const numParticles = 65;
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 2.2 + 0.8,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.8) * 1.1,
+        alpha: Math.random() * 0.7 + 0.3,
+        pulse: Math.random() * 0.04
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw faint energy connecting lines
+      for (let i = 0; i < numParticles; i++) {
+        for (let j = i + 1; j < numParticles; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(0, 240, 255, ${(1 - dist / 140) * 0.18})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw glowing cyan/blue particles
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+
+        p.alpha += Math.sin(Date.now() * 0.003) * p.pulse;
+        const clampedAlpha = Math.max(0.15, Math.min(0.85, p.alpha));
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 240, 255, ${clampedAlpha})`;
+        ctx.shadowBlur = 14;
+        ctx.shadowColor = '#00f0ff';
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
   }
 
   // ==========================================
