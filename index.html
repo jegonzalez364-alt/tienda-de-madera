@@ -10,8 +10,8 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Main Stylesheet (v=3 Cache Busted) -->
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
@@ -27,6 +27,7 @@
         <a href="#inicio" class="nav-link">Inicio</a>
         <a href="#nosotros" class="nav-link">Nosotros</a>
         <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#galeria" class="nav-link">Galería</a>
         <a href="#catalogo" class="nav-link">Catálogo</a>
         <a href="#cotizador" class="nav-link">Cotizador</a>
         <a href="#sucursales" class="nav-link">Sucursales</a>
@@ -44,7 +45,7 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION WITH INTERACTIVE CAROUSEL GALLERY -->
   <section class="hero" id="inicio">
     <div class="hero-bg-effect"></div>
     <div class="container hero-grid">
@@ -82,9 +83,27 @@
         </div>
       </div>
 
-      <div class="hero-media">
+      <!-- HERO INTERACTIVE SLIDER GALLERY (RIGHT SIDE - UN-CROPPED) -->
+      <div class="hero-media" id="galeria">
         <div class="hero-card-glow">
-          <img src="assets/hero-banner-1.jpg" alt="GLOBAL MDT Corte de Alto Nivel" class="hero-banner-img">
+          <div class="hero-slider-container">
+            <div class="hero-slider-track" id="heroSliderTrack">
+              <!-- Dynamic slides generated in script.js -->
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="slider-arrow prev" id="sliderPrev" aria-label="Anterior">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-arrow next" id="sliderNext" aria-label="Siguiente">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div class="slider-dots" id="sliderDots">
+              <!-- Dots generated dynamically -->
+            </div>
+          </div>
+
           <div class="hero-floating-badge">
             <i class="fas fa-truck-fast badge-icon"></i>
             <div class="badge-text">
@@ -97,11 +116,11 @@
     </div>
   </section>
 
-  <!-- ABOUT US / NOSOTROS -->
+  <!-- ABOUT US / NOSOTROS (UN-CROPPED PROMO BANNER) -->
   <section class="about-section" id="nosotros">
     <div class="container about-grid">
       <div class="about-image-wrapper">
-        <img src="assets/hero-banner-2.jpg" alt="Maquinaria de Enchape KOT Global MDT" class="about-img">
+        <img src="assets/WhatsApp Image 2026-07-24 at 10.59.23 AM.jpeg" alt="Corte y Enchape Global MDT" class="about-img" id="aboutImg">
       </div>
       <div>
         <span class="section-tag">Sobre Nosotros</span>
@@ -419,14 +438,16 @@
     <span>Cotizar 310 851 1257</span>
   </a>
 
-  <!-- MODAL LIGHTBOX -->
+  <!-- MODAL LIGHTBOX (UN-CROPPED WRAPPER) -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-card">
       <button class="modal-close" id="modalClose">&times;</button>
-      <img src="" alt="Detalle de Material" class="modal-img" id="modalImg">
-      <h3 class="item-title" id="modalTitle" style="font-size: 1.5rem; color: var(--gold-primary); margin-bottom: 10px;"></h3>
-      <p class="item-desc" id="modalDesc" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 15px;"></p>
-      <p id="modalSpecs" style="font-size: 0.9rem; color: var(--cyan-bright); background: rgba(0, 240, 255, 0.08); padding: 10px 15px; border-radius: var(--radius-sm); border: 1px solid var(--cyan-glow); margin-bottom: 20px;"></p>
+      <div class="modal-img-wrapper">
+        <img src="" alt="Detalle de Material" class="modal-img" id="modalImg">
+      </div>
+      <h3 class="item-title" id="modalTitle" style="font-size: 1.5rem; color: var(--gold-primary); margin-bottom: 10px; text-align: center;"></h3>
+      <p class="item-desc" id="modalDesc" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 15px; text-align: center;"></p>
+      <p id="modalSpecs" style="font-size: 0.9rem; color: var(--cyan-bright); background: rgba(0, 240, 255, 0.08); padding: 10px 15px; border-radius: var(--radius-sm); border: 1px solid var(--cyan-glow); margin-bottom: 20px; width: 100%; text-align: center;"></p>
 
       <a href="#" id="modalWhatsappLink" target="_blank" class="btn btn-whatsapp" style="width: 100%;">
         <i class="fab fa-whatsapp"></i> Cotizar este Material en WhatsApp
@@ -434,7 +455,7 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <script src="script.js"></script>
+  <!-- JavaScript (v=3 Cache Busted) -->
+  <script src="script.js?v=3"></script>
 </body>
 </html>

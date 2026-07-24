@@ -1,6 +1,6 @@
 /* ==========================================================================
    GLOBAL MDT - INTERACTIVE LANDING PAGE SCRIPT
-   Handles Catalog filtering, WhatsApp Quote Builder, Lightbox, & Map triggers
+   Handles Hero Gallery Carousel, Catalog filtering, WhatsApp Quote Builder, & Lightbox
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +14,133 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Catalog Data Definition using project assets
+  // ==========================================
+  // HERO CAROUSEL GALLERY SLIDER (UN-CROPPED)
+  // ==========================================
+  const sliderImages = [
+    {
+      src: "assets/hero-banner-1.jpg",
+      title: "Corte de Alto Nivel & Enchape PVC",
+      subtitle: "Maquinaria Industrial KOT - +60 Sucursales"
+    },
+    {
+      src: "assets/hero-banner-2.jpg",
+      title: "Enchape Automático de Cantos PVC",
+      subtitle: "Tecnología de última generación para tableros MDF y Melamina"
+    },
+    {
+      src: "assets/sdasdasdasdasda.jpeg",
+      title: "Piezas Listas para Armar",
+      subtitle: "Corte y Enchape a la medida con entrega rápida nacional"
+    },
+    {
+      src: "assets/WhatsApp Image 2026-07-24 at 10.59.23 AM.jpeg",
+      title: "Producción Moderna para Proyectos Exigentes",
+      subtitle: "Optimizamos tu despiece al milímetro"
+    },
+    {
+      src: "assets/WhatsApp Image 2026-07-24 at 10.56.19 AM (47).jpeg",
+      title: "Gran Variedad de Melaminas y Tapacantos",
+      subtitle: "Tonos amaderados, texturizados y unicolores"
+    },
+    {
+      src: "assets/WhatsApp Image 2026-07-24 at 10.56.19 AM (48).jpeg",
+      title: "Catálogo Completo de Insumos para Carpintería",
+      subtitle: "Envíos directos a todo el país"
+    }
+  ];
+
+  const sliderTrack = document.getElementById('heroSliderTrack');
+  const sliderDots = document.getElementById('sliderDots');
+  const prevBtn = document.getElementById('sliderPrev');
+  const nextBtn = document.getElementById('sliderNext');
+
+  let currentSlideIndex = 0;
+  let autoSlideTimer = null;
+
+  function initHeroSlider() {
+    if (!sliderTrack || !sliderDots) return;
+
+    sliderTrack.innerHTML = sliderImages.map((img, idx) => `
+      <div class="hero-slide" data-index="${idx}">
+        <img src="${img.src}" alt="${img.title}" class="hero-banner-img" style="cursor: pointer;" title="Haz clic para ampliar">
+      </div>
+    `).join('');
+
+    sliderDots.innerHTML = sliderImages.map((_, idx) => `
+      <div class="slider-dot ${idx === 0 ? 'active' : ''}" data-index="${idx}"></div>
+    `).join('');
+
+    // Click to zoom slide image in modal
+    document.querySelectorAll('.hero-banner-img').forEach((slideImg, idx) => {
+      slideImg.addEventListener('click', () => {
+        const item = sliderImages[idx];
+        openModal({
+          name: item.title,
+          image: item.src,
+          description: item.subtitle,
+          specs: "Imagen del Catálogo Oficial GLOBAL MDT | Resoluci\u00f3n Completa Sin Cortes"
+        });
+      });
+    });
+
+    startAutoSlide();
+  }
+
+  function goToSlide(index) {
+    if (index < 0) index = sliderImages.length - 1;
+    if (index >= sliderImages.length) index = 0;
+
+    currentSlideIndex = index;
+    if (sliderTrack) {
+      sliderTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+    }
+
+    document.querySelectorAll('.slider-dot').forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentSlideIndex);
+    });
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    autoSlideTimer = setInterval(() => {
+      goToSlide(currentSlideIndex + 1);
+    }, 4500);
+  }
+
+  function stopAutoSlide() {
+    if (autoSlideTimer) clearInterval(autoSlideTimer);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      goToSlide(currentSlideIndex - 1);
+      startAutoSlide();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      goToSlide(currentSlideIndex + 1);
+      startAutoSlide();
+    });
+  }
+
+  if (sliderDots) {
+    sliderDots.addEventListener('click', (e) => {
+      if (e.target.classList.contains('slider-dot')) {
+        const idx = parseInt(e.target.dataset.index);
+        goToSlide(idx);
+        startAutoSlide();
+      }
+    });
+  }
+
+  initHeroSlider();
+
+  // ==========================================
+  // CATALOG DATA DEFINITION
+  // ==========================================
   const catalogData = [
     {
       id: 1,
@@ -34,6 +160,22 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       id: 3,
+      name: "Piezas Listas para Armar - Despiece CNC",
+      category: "servicios",
+      image: "assets/sdasdasdasdasda.jpeg",
+      description: "Entrega de módulos despachados con cantos enchapados y perforaciones marcadas para montaje exprés.",
+      specs: "Optimización por software de corte | Etiquetado por pieza"
+    },
+    {
+      id: 4,
+      name: "Producción Moderna para Proyectos Exigentes",
+      category: "servicios",
+      image: "assets/WhatsApp Image 2026-07-24 at 10.59.23 AM.jpeg",
+      description: "Soluciones industriales para arquitectura de interiores, cocinas integrales, clósets y mobiliario comercial.",
+      specs: "Garantía de acabado perfecto | Capacidad para alta demanda"
+    },
+    {
+      id: 5,
       name: "Tapacanto PVC Tono Madera Caoba Premium",
       category: "enchape",
       image: "assets/WhatsApp Image 2026-07-24 at 10.56.19 AM (1).jpeg",
@@ -41,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
       specs: "Anchos: 19mm, 22mm, 45mm | Rollos de 100m y 200m"
     },
     {
-      id: 4,
+      id: 6,
       name: "Lámina Melamina Roble Catedral 18mm",
       category: "melamina",
       image: "assets/WhatsApp Image 2026-07-24 at 10.56.19 AM (13).jpeg",
@@ -49,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
       specs: "Resistencia al rayado | Calibre 18mm | Formato estándar"
     },
     {
-      id: 5,
+      id: 7,
       name: "Lámina Melamina Blanco Absoluto Sólido",
       category: "melamina",
       image: "assets/WhatsApp Image 2026-07-24 at 10.56.19 AM (14).jpeg",
@@ -57,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       specs: "Superficie de fácil limpieza | Calibres 15mm y 18mm"
     },
     {
-      id: 6,
+      id: 8,
       name: "Tablero MDF Crudo de Alta Densidad",
       category: "mdf",
       image: "assets/WhatsApp Image 2026-07-24 at 10.56.19 AM (15).jpeg",
@@ -65,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
       specs: "Excelente maquinabilidad | Espesores: 5.5mm, 9mm, 12mm, 15mm, 18mm"
     },
     {
-      id: 7,
+      id: 9,
       name: "Rollo Enchape PVC Veta Nogal Oscuro",
       category: "enchape",
       image: "assets/WhatsApp Image 2026-07-24 at 10.56.19 AM (16).jpeg",
@@ -73,20 +215,12 @@ document.addEventListener('DOMContentLoaded', () => {
       specs: "Grosor 1mm | Resistencia UV e impactos"
     },
     {
-      id: 8,
+      id: 10,
       name: "Melamina Gris Humo Texturizada",
       category: "melamina",
       image: "assets/WhatsApp Image 2026-07-24 at 10.56.19 AM (17).jpeg",
       description: "Tono moderno neutro para mobiliario de oficina y cocina vanguardista.",
       specs: "Antihuella | 18mm grosor"
-    },
-    {
-      id: 9,
-      name: "Maquinaria Enchapadora KOT Industrial",
-      category: "servicios",
-      image: "assets/WhatsApp Image 2026-07-24 at 10.56.19 AM (2).jpeg",
-      description: "Equipos de última generación para procesamiento masivo con más de 60 sucursales en todo el país.",
-      specs: "Capacidad industrial | Rapidez y precisión garantizada"
     }
   ];
 
@@ -108,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p class="item-desc">${item.description}</p>
           <div class="item-footer">
             <button class="item-action-btn view-details-btn">
-              Ver Detalles <i class="fas fa-arrow-right"></i>
+              Ver Detalles <i class="fas fa-search-plus"></i>
             </button>
             <a href="https://wa.me/573108511257?text=Hola%20GLOBAL%20MDT,%20me%20interesa%20cotizar:%20${encodeURIComponent(item.name)}" target="_blank" class="item-action-btn" style="color: var(--whatsapp-green);">
               <i class="fab fa-whatsapp"></i> Cotizar
@@ -174,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalTitle.textContent = product.name;
     modalDesc.textContent = product.description;
     modalSpecs.textContent = product.specs;
-    modalWhatsappLink.href = `https://wa.me/573108511257?text=Hola%20GLOBAL%20MDT,%20solicito%20información%20y%20cotización%20sobre:%20${encodeURIComponent(product.name)}`;
+    modalWhatsappLink.href = `https://wa.me/573108511257?text=Hola%20GLOBAL%20MDT,%20solicito%20informaci%C3%B3n%20y%20cotizaci%C3%B3n%20sobre:%20${encodeURIComponent(product.name)}`;
     modalOverlay.classList.add('active');
   }
 
@@ -209,8 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const edge = calcEdge.options[calcEdge.selectedIndex].text;
     const qty = parseInt(calcQuantity.value) || 1;
 
-    // Price estimations (standard reference calculation)
-    let basePricePerSheet = 120000; // COP
+    let basePricePerSheet = 120000;
     if (calcMaterial.value === 'melamina-wood') basePricePerSheet = 175000;
     if (calcMaterial.value === 'melamina-color') basePricePerSheet = 160000;
     if (calcMaterial.value === 'mdf-18') basePricePerSheet = 135000;
