@@ -1,0 +1,12 @@
+{
+  "name": "tienda-de-madera",
+  "version": "1.0.0",
+  "description": "GLOBAL MDT - Landing Page Comercial",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y http-server . -p $PORT"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
