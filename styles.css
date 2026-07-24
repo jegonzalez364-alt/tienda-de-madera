@@ -1,25 +1,25 @@
 /* ==========================================================================
-   GLOBAL MDT - LANDING PAGE STYLESHEET (ELECTRIC ENERGY AURA EDITION)
-   Design System: Dark Industrial Marble + Glowing Electric Blue Rays + Metallic Gold
+   GLOBAL MDT - LANDING PAGE STYLESHEET (DARK MIDNIGHT ELECTRIC BLUE)
+   Design System: Deep Dark Midnight Blue + Glowing Cyan Energy Rays + Metallic Gold
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&display=swap');
 
 :root {
-  /* Color Palette */
-  --bg-main: #02050d;
-  --bg-secondary: #060b16;
-  --bg-card: rgba(10, 16, 28, 0.88);
-  --bg-card-hover: rgba(16, 26, 44, 0.95);
+  /* Color Palette - Ultra Dark Midnight Blue Base */
+  --bg-main: #010308;
+  --bg-secondary: #030610;
+  --bg-card: rgba(6, 10, 18, 0.92);
+  --bg-card-hover: rgba(10, 16, 28, 0.96);
   
   --gold-primary: #f5b041;
   --gold-gradient: linear-gradient(135deg, #fff3a3 0%, #f39c12 50%, #b7770d 100%);
-  --gold-glow: rgba(243, 156, 18, 0.5);
+  --gold-glow: rgba(243, 156, 18, 0.4);
   
   --cyan-bright: #00f0ff;
-  --cyan-glow: rgba(0, 240, 255, 0.45);
+  --cyan-glow: rgba(0, 240, 255, 0.35);
   --blue-electric: #0077ff;
-  --blue-deep: #002244;
+  --blue-deep: #00122e;
 
   --red-pill: linear-gradient(180deg, #b31212 0%, #5e0b0b 100%);
   --red-pill-border: #ff4d4d;
@@ -63,7 +63,7 @@ body {
   position: relative;
 }
 
-/* Electric Energy Background Effect Layer */
+/* DEEP DARK MIDNIGHT ELECTRIC BLUE BACKGROUND LAYER */
 body::before {
   content: '';
   position: fixed;
@@ -74,17 +74,17 @@ body::before {
   pointer-events: none;
   z-index: -2;
   background: 
-    /* Cyber Blue Radial Energy Beams */
-    radial-gradient(ellipse at 50% 10%, rgba(0, 240, 255, 0.28) 0%, transparent 65%),
-    radial-gradient(circle at 10% 50%, rgba(0, 119, 255, 0.25) 0%, transparent 55%),
-    radial-gradient(circle at 90% 60%, rgba(0, 240, 255, 0.25) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 90%, rgba(0, 153, 255, 0.2) 0%, transparent 70%),
-    /* Dark Space Base */
-    linear-gradient(180deg, #02040b 0%, #050a18 50%, #02040a 100%);
+    /* Deeper, subtly shaded radial glows */
+    radial-gradient(ellipse at 50% 10%, rgba(0, 240, 255, 0.16) 0%, transparent 60%),
+    radial-gradient(circle at 10% 50%, rgba(0, 85, 204, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 60%, rgba(0, 180, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 90%, rgba(0, 100, 220, 0.12) 0%, transparent 65%),
+    /* Ultra-dark Space Navy Base */
+    linear-gradient(180deg, #010206 0%, #030612 50%, #010205 100%);
   background-attachment: fixed;
 }
 
-/* Animated Diagonal Energy Rays */
+/* Animated Subtle Energy Rays */
 body::after {
   content: '';
   position: fixed;
@@ -95,16 +95,16 @@ body::after {
   pointer-events: none;
   z-index: -1;
   background-image: 
-    repeating-linear-gradient(45deg, transparent, transparent 160px, rgba(0, 240, 255, 0.05) 160px, rgba(0, 240, 255, 0.05) 163px),
-    repeating-linear-gradient(-45deg, transparent, transparent 200px, rgba(0, 119, 255, 0.06) 200px, rgba(0, 119, 255, 0.06) 204px);
-  animation: laserEnergyPulse 12s ease-in-out infinite alternate;
-  opacity: 0.85;
+    repeating-linear-gradient(45deg, transparent, transparent 180px, rgba(0, 240, 255, 0.035) 180px, rgba(0, 240, 255, 0.035) 182px),
+    repeating-linear-gradient(-45deg, transparent, transparent 220px, rgba(0, 119, 255, 0.04) 220px, rgba(0, 119, 255, 0.04) 223px);
+  animation: laserEnergyPulse 14s ease-in-out infinite alternate;
+  opacity: 0.75;
 }
 
 @keyframes laserEnergyPulse {
-  0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-  50% { transform: translate(1.5%, 1.5%) scale(1.02); opacity: 1; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(1%, 1%) scale(1.01); opacity: 0.85; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
 }
 
 /* Canvas Energy Particles Container */
@@ -202,7 +202,7 @@ img {
 
 .btn-primary {
   background: var(--gold-gradient);
-  color: #02040a;
+  color: #010308;
   box-shadow: 0 0 25px rgba(243, 156, 18, 0.5);
 }
 
@@ -224,15 +224,15 @@ img {
 }
 
 .btn-outline {
-  background: rgba(0, 240, 255, 0.08);
+  background: rgba(0, 240, 255, 0.06);
   border: 1px solid var(--cyan-bright);
   color: var(--cyan-bright);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
 .btn-outline:hover {
   background: var(--cyan-bright);
-  color: #02040a;
+  color: #010308;
   box-shadow: 0 0 30px var(--cyan-glow);
   transform: translateY(-3px);
 }
@@ -244,10 +244,10 @@ img {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background: rgba(4, 7, 15, 0.92);
+  background: rgba(2, 4, 10, 0.94);
   backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
-  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.8);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -415,7 +415,7 @@ img {
   letter-spacing: 0.5px;
 }
 
-/* HERO SLIDER CAROUSEL (FLOATING BADGE POSITIONED AT TOP RIGHT) */
+/* HERO SLIDER CAROUSEL (DARKER BLUE CONTAINER) */
 .hero-media {
   position: relative;
   width: 100%;
@@ -423,11 +423,11 @@ img {
 
 .hero-card-glow {
   position: relative;
-  background: rgba(6, 10, 20, 0.95);
+  background: rgba(3, 6, 14, 0.96);
   border: 1.5px solid var(--cyan-bright);
   border-radius: var(--radius-lg);
   padding: 16px;
-  box-shadow: 0 0 50px rgba(0, 240, 255, 0.35);
+  box-shadow: 0 0 50px rgba(0, 240, 255, 0.3);
   overflow: hidden;
 }
 
@@ -436,7 +436,7 @@ img {
   width: 100%;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: #020409;
+  background: #010205;
   display: flex;
   flex-direction: column;
 }
@@ -452,7 +452,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #020409;
+  background: #010205;
   padding: 10px;
 }
 
@@ -468,7 +468,7 @@ img {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(4, 7, 15, 0.9);
+  background: rgba(2, 4, 10, 0.92);
   border: 1px solid var(--cyan-bright);
   color: var(--cyan-bright);
   width: 44px;
@@ -485,7 +485,7 @@ img {
 
 .slider-arrow:hover {
   background: var(--cyan-bright);
-  color: #02040a;
+  color: #010308;
   box-shadow: 0 0 25px var(--cyan-glow);
 }
 
@@ -500,11 +500,11 @@ img {
   display: flex;
   gap: 8px;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.8);
   padding: 6px 16px;
   border-radius: var(--radius-pill);
   border: 1px solid rgba(0, 240, 255, 0.3);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
 }
 
 .slider-dot {
@@ -522,12 +522,12 @@ img {
   box-shadow: 0 0 10px var(--gold-glow);
 }
 
-/* POSITIONED AT TOP-RIGHT SO IT NEVER OVERLAPS THE DOTS! */
+/* FLOATING BADGE (TOP RIGHT UN-OVERLAPPED) */
 .hero-floating-badge {
   position: absolute;
   top: 25px;
   right: 25px;
-  background: rgba(4, 7, 15, 0.92);
+  background: rgba(2, 5, 12, 0.94);
   border: 1px solid var(--gold-primary);
   padding: 8px 16px;
   border-radius: var(--radius-pill);
@@ -561,7 +561,7 @@ img {
 .about-section {
   padding: 100px 0;
   position: relative;
-  background: rgba(4, 7, 15, 0.75);
+  background: rgba(2, 4, 10, 0.85);
   border-top: 1px solid rgba(0, 240, 255, 0.15);
   border-bottom: 1px solid rgba(0, 240, 255, 0.15);
 }
@@ -575,7 +575,7 @@ img {
 
 .about-image-wrapper {
   position: relative;
-  background: rgba(4, 7, 15, 0.95);
+  background: rgba(3, 6, 14, 0.96);
   padding: 14px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--cyan-bright);
@@ -587,7 +587,7 @@ img {
   width: 100%;
   height: 460px;
   object-fit: contain !important;
-  background: #020409;
+  background: #010205;
   display: block;
 }
 
@@ -643,7 +643,7 @@ img {
 
 .service-card {
   background: var(--bg-card);
-  border: 1px solid rgba(0, 240, 255, 0.2);
+  border: 1px solid rgba(0, 240, 255, 0.18);
   border-radius: var(--radius-lg);
   padding: 35px 28px;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -668,7 +668,7 @@ img {
 .service-card:hover {
   transform: translateY(-10px);
   border-color: var(--cyan-bright);
-  box-shadow: 0 15px 35px rgba(0, 240, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 240, 255, 0.25);
 }
 
 .service-card:hover::before {
@@ -678,7 +678,7 @@ img {
 .service-icon-wrap {
   width: 60px;
   height: 60px;
-  background: rgba(0, 240, 255, 0.12);
+  background: rgba(0, 240, 255, 0.1);
   border: 1px solid var(--cyan-glow);
   border-radius: var(--radius-md);
   display: flex;
@@ -721,7 +721,7 @@ img {
 /* Interactive Catalog Section */
 .catalog-section {
   padding: 100px 0;
-  background: rgba(4, 7, 15, 0.75);
+  background: rgba(2, 4, 10, 0.85);
   border-top: 1px solid rgba(0, 240, 255, 0.15);
 }
 
@@ -755,7 +755,7 @@ img {
 .filter-btn:hover,
 .filter-btn.active {
   background: var(--cyan-bright);
-  color: #02040a;
+  color: #010308;
   border-color: var(--cyan-bright);
   box-shadow: 0 0 20px var(--cyan-glow);
 }
@@ -815,7 +815,7 @@ img {
 
 .item-image-wrap {
   height: 260px;
-  background: #020409;
+  background: #010205;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -845,7 +845,7 @@ img {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(4, 7, 15, 0.92);
+  background: rgba(2, 4, 10, 0.94);
   border: 1px solid var(--cyan-glow);
   color: var(--cyan-bright);
   font-size: 0.75rem;
@@ -933,7 +933,7 @@ img {
 
 .calc-select,
 .calc-input {
-  background: rgba(4, 7, 15, 0.95);
+  background: rgba(2, 4, 10, 0.95);
   border: 1px solid rgba(0, 240, 255, 0.35);
   padding: 14px 18px;
   border-radius: var(--radius-md);
@@ -976,7 +976,7 @@ img {
 /* Branches / Sucursales */
 .branches-section {
   padding: 100px 0;
-  background: rgba(4, 7, 15, 0.75);
+  background: rgba(2, 4, 10, 0.85);
 }
 
 .branches-grid {
@@ -1043,7 +1043,7 @@ img {
 .form-input,
 .form-textarea {
   width: 100%;
-  background: rgba(4, 7, 15, 0.9);
+  background: rgba(2, 4, 10, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-md);
   padding: 14px 18px;
@@ -1077,7 +1077,7 @@ img {
 
 /* Footer */
 .footer {
-  background: #020306;
+  background: #010204;
   border-top: 1px solid rgba(0, 240, 255, 0.2);
   padding: 60px 0 30px;
 }
@@ -1158,7 +1158,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.94);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(14px);
   z-index: 2000;
   display: flex;
@@ -1207,7 +1207,7 @@ img {
 
 .modal-img-wrapper {
   width: 100%;
-  background: #020409;
+  background: #010205;
   border-radius: var(--radius-md);
   padding: 12px;
   margin-bottom: 20px;
